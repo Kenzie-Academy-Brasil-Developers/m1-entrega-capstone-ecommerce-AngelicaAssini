@@ -89,13 +89,14 @@ main ul li figure.figure-vitrine{
     width: 296px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     background-color: rgba(245, 245, 245, 1);
     
    
 }            
-main ul li figure img.img-carrinho{
-    height: 140px;
-    width: 191.81´px;
+main ul li figure img.img-vitrine{
+    height: 90%;
+    width: 90%;
     padding: 9px 52.19px 5px 52px;
     
     } 
@@ -212,7 +213,7 @@ main aside section ul li figure.figure-carrinho{
 }
 
 main aside section ul li figure img.img-carrinho{
-    width: 150%;
+    width: 90%;
     height: 90%;
     justify-content: center;
     align-content: center;

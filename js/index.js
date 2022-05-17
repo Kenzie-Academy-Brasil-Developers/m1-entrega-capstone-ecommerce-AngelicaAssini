@@ -1,4 +1,4 @@
-let productsList = document.getElementsByClassName("produtos")
+/* let productsList = document.getElementsByClassName("produtos")
 console.log("oi")
 console.log(productsList)
 
@@ -34,4 +34,4 @@ function criarCardProduto(produto){
     let tagTag = document.getElementsByClassName("tag")
     let tagProductName = document.getElementsByClassName("product-name")
     let tagTag = document.getElementsByTagName("p")
-}
+} */
