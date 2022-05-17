@@ -75,6 +75,15 @@ main ul li{
     flex-direction: column;
 }  
 
+main ul li:hover{
+    width: 296px;
+    height: 408px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #000000;
+    box-sizing: content-box;
+} 
+
 main ul li figure{
     height: 154px;
     width: 296px;
@@ -85,8 +94,8 @@ main ul li figure{
    
 }            
 main ul li figure img{
-    height: 140;
-    width: 191.81;
+    height: 140px;
+    width: 191.81´px;
     padding: 9px 52.19px 5px 52px;
     
     } 
