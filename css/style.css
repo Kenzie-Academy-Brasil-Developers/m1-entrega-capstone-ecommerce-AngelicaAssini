@@ -40,7 +40,7 @@ header section h1.logo{
     display: block;
 }
 
-header section nav {
+header section nav{
     width: 370px;
     height: 16px;
     display: flex;
@@ -68,14 +68,14 @@ main ul.produtos{
     flex-direction: row;
     justify-content: space-evenly;
 } 
-main ul li{
+main ul li.item-vitrine{
     width: 296px;
     height: 408px;
     display: flex;
     flex-direction: column;
 }  
 
-main ul li:hover{
+main ul li.item-vitrine:hover{
     width: 296px;
     height: 408px;
     display: flex;
@@ -84,7 +84,7 @@ main ul li:hover{
     box-sizing: content-box;
 } 
 
-main ul li figure{
+main ul li figure.figure-vitrine{
     height: 154px;
     width: 296px;
     display: flex;
@@ -93,14 +93,14 @@ main ul li figure{
     
    
 }            
-main ul li figure img{
+main ul li figure img.img-carrinho{
     height: 140px;
     width: 191.81´px;
     padding: 9px 52.19px 5px 52px;
     
     } 
 
-main ul li section{
+main ul li section.texts-vitrine{
     height: 254px;
     width: 296px;
     display: flex;
@@ -187,28 +187,48 @@ main aside section button.btn-carrinho{
 
 }
 main aside section ul{
+    width: 347px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(245, 245, 245, 1);
     justify-content: space-between;
 }
-main aside section ul li#item-carrinho{
+main aside section ul li.item-carrinho{
+    width: 300px;
+    height: 92px;
     display: flex;
     flex-direction: row;
-}
-main aside section ul li figure{
-    display: flex;
-    flex-direction: row;
-    
-
-}
-
-main aside section ul li figure  img{
-    max-width: 150%;
-}
-
-main aside section ul li section{
-    height: 100px;
     justify-content: space-between;
+}
+main aside section ul li figure.figure-carrinho{
+    width: 40%;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
     align-content: center;
+    background-color: white;
+}
+
+main aside section ul li figure img.img-carrinho{
+    width: 150%;
+    height: 90%;
+    justify-content: center;
+    align-content: center;
+}
+
+main aside section ul li section.section-carrinho{
+    max-width: 50%;
+    height: 100px;
+    margin: 10px;
+    justify-content: left;
+    align-content: space-between;
+}
+
+main aside section li section button.btn-remove{
+    border-color: transparent;
+    background-color: transparent;
 }
 
 main aside section div.total-carrinho{
@@ -223,7 +243,7 @@ main aside section div.total-carrinho{
 main aside section div div.linha1{
     justify-content: space-between;
     margin:  auto 14px;
-    
+ 
 }
 
 main aside section div div.linha2{
