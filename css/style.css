@@ -32,12 +32,13 @@ header section#header-container{
 
 header section h1.logo{
     width: 212px;
-    height: 24px;
-    margin: 0 0 0 118px;
+    height: 32px;
+    margin: auto 0 auto 118px;
     font-family: Inter;
     font-size: 30px;
     color: rgba(41, 41, 41, 1);
     display: block;
+    
 }
 
 header section nav{
@@ -46,6 +47,7 @@ header section nav{
     display: flex;
     align-content: center;
     justify-content: space-evenly;
+    margin: auto 0;
    
 }
                 
@@ -214,7 +216,7 @@ main aside section ul{
     display: flex;
     flex-direction: column;
     background-color: rgba(245, 245, 245, 1);
-    justify-content: space-between;
+    justify-content:start;
 }
 main aside section ul li.item-carrinho{
     width: 300px;
