@@ -207,6 +207,7 @@ main aside section button.btn-carrinho{
     color: rgba(255, 255, 255, 1);
 
 }
+
 main aside section ul{
     width: 347px;
     height: 450px;
@@ -250,6 +251,12 @@ main aside section ul li section.section-carrinho{
 main aside section li section button.btn-remove{
     border-color: transparent;
     background-color: transparent;
+}
+
+main aside section li section button.btn-remove:hover{
+    border-color: transparent;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 main aside section div.total-carrinho{

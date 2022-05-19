@@ -1,31 +1,34 @@
-/* let productsList = document.getElementsByClassName("produtos")
+let ulProductsList = document.getElementsByClassName("produtos")
+let carrinho =[]
 
-//listando produtos da base
-function listProducts(listaProdutos){
-    //limpando a lista, para listar novamente os produtos
-    productsList.innerHTML = ""
-    //percorrendo o array de produtos
-    for(let i = 0; i < listaProdutos.length; i++){
-        //acessando cada produto
-        let product = listaProdutos[i]
+//listando produtos da vitrine
+function listProducts(showcaseProducts){
+    //limpando a lista(ul), para recarregar os produtos
+    ulProductsList.innerHTML = ""
+    
+    //percorrendo o array de produtos disponibilizado em database.js (data)
+    for(let i = 0; i < showcaseProducts.length; i++){
+        //acessando cada produto e declarando-o numa variável
+        let product = showcaseProducts[i]
         
         //criando card produto (return LI)
-        let productCard = createCardProduct(product)
-        productsList.appendChild(productCard)
+        let productCard = createProductCard(product)
+        ulProductsList[0].appendChild(productCard)
     }
 }
 listProducts(data)
 
 //função criar card produto
-function createCardProduct(product){
-    //recuperando informações do produto
+function createProductCard(product){
+    //recuperando informações do produto da vitrine
     let imageProduct       = product.img
     let tagProduct         = product.tag
     let nameProduct        = product.nameItem
-    let descriptionProduct = product.descriptionProduto
+    let descriptionProduct = product.description
     let priceProduct       = product.value
+    let btnId              = product.id
     
-    //criando elementos do card produto e adicionando classes a eles
+    //criando elementos para o card produto e adicionando classes a eles
     let tagLi          = document.createElement("li")
     tagLi.classList.add("item-vitrine")
 
@@ -54,75 +57,124 @@ function createCardProduct(product){
     tagBtn.classList.add("btn-add-carrinho")
 
     //adicionar as informações nas tags criadas
-    tagImage.src             = imageProduct
-    tagImage.alt             = nameProduct
-    tag.innerHTML            = tagProduct
-    tagProductName.innerHTML = `<strong> ${nameProduct}</strong>`
-    tagDescription.innerHTML = descriptionProduct
-    tagPrice.innerHTML       = `<strong>R$ ${priceProduct}</strong>`
+    tagImage.src              = imageProduct
+    tagImage.alt              = nameProduct
+    tagT.innerHTML            = tagProduct
+    tagProductName.innerHTML  = `<strong>${nameProduct}</strong>`
+    tagDescription.innerText  = descriptionProduct
+    tagPrice.innerHTML        = `<strong>R$ ${priceProduct}.00</strong>`
+    tagBtn.innerHTML          = "Adicionar ao carrinho"
+    tagBtn.id                 = btnId
+    
+    //interceptando evento
+    tagBtn.addEventListener("click", onClickFunction)
 
     //montar o template card    
     tagFigure.appendChild(tagImage)
     tagSection.append(tagT, tagProductName, tagDescription, tagPrice, tagBtn)
     tagLi.append(tagFigure, tagSection)
-
+  
     //retornar card criado
     return tagLi
 }
 
-//interceptando evento
-let evento = tagBtn.addEventListener("click", sendToCar)
+//função evento que adiciona itens no carrinho
+function onClickFunction(e){
+    let tagUlCar = document.getElementById("lista-produtos-carrinho")
+    let aux      = data.find((item)=>{
+        return item.id == e.target.id
+    })
+    carrinho.push(aux)
+    sumCar(carrinho)
+    
+    let LIaux = createProductCar(aux)
 
-//função que vai ser chamada no evento
-function sendToCar(event, cardProduto){
-    //criando tags do carrinho e adicionando classes
-    let tagLiCar      = document.createElement("li")
+    tagUlCar.appendChild(LIaux)
+  
+}
+
+function createProductCar(productC){
+   //criando tags do carrinho e adicionando classes
+    let tagLiCar           = document.createElement("li")
     tagLiCar.classList.add("item-carrinho")
     
-    let tagFigureCar  = document.createElement("figure")
+    let tagFigureCar       = document.createElement("figure")
     tagFigureCar.classList.add("figure-carrinho")
     
-    let tagImageCar   = document.createElement("img")
+    let tagImageCar        = document.createElement("img")
     tagImageCar.classList.add("img-carrinho")
     
-    let tagSectionCar = document.createElement("section")
+    let tagSectionCar      = document.createElement("section")
     tagSectionCar.classList.add("section-carrinho")
 
-    let tag
+    let tagSectionNameCar  = document.createElement("p")
+    tagSectionNameCar.classList.add("product-name-car")
+
+    let tagSectionPriceCar = document.createElement("p")
+    tagSectionPriceCar.classList.add("price-car")
     
-    let tagBtnCar     = document.createElement("button")
+    let tagBtnCar          = document.createElement("button")
     tagBtnCar.classList.add("btn-remove")
     
-    tagUl.classList.add("lista-produtos-carrinho")
-
-    //inserindo as informações recebidas nas tags criadas
-    tagImageCar = tagImage
+    //inserindo as informações do produto nas tags criadas
+    tagImageCar.src              = productC.img
+    tagImageCar.alt              = productC.nameItem
+    tagSectionNameCar.innerHTML  = `<strong> ${productC.nameItem}</strong>`
+    tagSectionPriceCar.innerHTML = `<strong>R$ ${productC.value}.00</strong>`
     
-    //montando o template Novo Produto
+    tagBtnCar.innerText          = "Remover produto"
+    tagBtnCar.id                 = productC.id
+        
+    //interceptando evento
+    tagBtnCar.addEventListener("click", removeItemCar)
+    
+    //montando o template do produto no carrinho
     tagFigureCar.appendChild(tagImageCar)
-    tagSectionCar.append(tagProductName, tagPrice, tagBtn, tagBtnCar)
+    tagSectionCar.append(tagSectionNameCar, tagSectionPriceCar, tagBtnCar)
     tagLiCar.append(tagFigureCar, tagSectionCar)
-
-    tagUl.appendChild(tagLiCar)
-
-    //retornando produto adicionado ao carrinho
+      
     return tagLiCar
 }
 
-//função remover item - A MONTAR
-function removeItemCar(){
 
-}
+//adicionando função remover ao botão tagBtnCar  
+function removeItemCar(e){
+    
+    let aux1 = carrinho.filter((item) => {
+        return item.id != e.target.id
+    })
+    carrinho = aux1
+    listCarrinho(carrinho)
+    sumCar(carrinho)
+} 
 
-//somando produtos do carrinho  - A MONTAR
-let quantidade = 0
-let total = 0
-function sumCar(tagUl){
-    for(let i = 0; i < tagUl.length; i++){
-        quantidade++
-        total += Number("linha2")
+function listCarrinho(array){
+    //limpando a lista(ul), para listar novamente os produtos
+    let tagUlCar       = document.getElementById("lista-produtos-carrinho")
+    tagUlCar.innerHTML = ""
+    
+    //percorrendo o array de produtos
+    for(let i = 0; i < array.length; i++){
+        //acessando cada produto
+        let productC = array[i]
+        
+        //criando card produto (return LI)
+        let productCarrinho = createProductCar(productC)
+        tagUlCar.appendChild(productCarrinho)
     }
 }
 
+//retornando quantidade e valores dos produtos do carrinho
+function sumCar(arr){
+    let total = 0
+    
+    for(let i = 0; i < arr.length; i++){
+        total += arr[i].value
+    }
 
- */
+    let tagQuantity   = document.getElementById("quantidade-total")
+    let tagTotalPrice = document.getElementById("preço-total")
+    
+    tagQuantity.innerText   = arr.length
+    tagTotalPrice.innerHTML = `R$ ${total}.00`
+}

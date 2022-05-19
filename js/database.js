@@ -27,7 +27,7 @@ const data = [
     nameItem: "Mask",
     description:
       "Esta máscara facial durável é feita de duas camadas de tecido tratado e possui presilhas...",
-    value: 40,
+    value: 100,
     addCart: "Adicionar ao carrinho",
     tag: ["Acessórios"],
   },
