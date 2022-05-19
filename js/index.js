@@ -1,7 +1,7 @@
 let ulProductsList = document.getElementsByClassName("produtos")
 let carrinho =[]
 
-//listando produtos da vitrine
+//função LISTAR PRODUTOS NA VITRINE
 function listProducts(showcaseProducts){
     //limpando a lista(ul), para recarregar os produtos
     ulProductsList.innerHTML = ""
@@ -18,7 +18,7 @@ function listProducts(showcaseProducts){
 }
 listProducts(data)
 
-//função criar card produto
+//função CRIAR CARD PRODUTOS
 function createProductCard(product){
     //recuperando informações do produto da vitrine
     let imageProduct       = product.img
@@ -78,7 +78,7 @@ function createProductCard(product){
     return tagLi
 }
 
-//função evento que adiciona itens no carrinho
+//função que ADICIONA ITENS NO CARRINHO (EVENTO)
 function onClickFunction(e){
     let tagUlCar = document.getElementById("lista-produtos-carrinho")
     let aux      = data.find((item)=>{
@@ -93,6 +93,7 @@ function onClickFunction(e){
   
 }
 
+//CRIAR CARD PRODUTOS NO CARRINHO
 function createProductCar(productC){
    //criando tags do carrinho e adicionando classes
     let tagLiCar           = document.createElement("li")
@@ -137,7 +138,7 @@ function createProductCar(productC){
 }
 
 
-//adicionando função remover ao botão tagBtnCar  
+//função REMOVER PRODUTOS DO CARRINHO  
 function removeItemCar(e){
     
     let aux1 = carrinho.filter((item) => {
@@ -148,6 +149,7 @@ function removeItemCar(e){
     sumCar(carrinho)
 } 
 
+//função LIMPAR CARRINHO e listar os produtos novamente
 function listCarrinho(array){
     //limpando a lista(ul), para listar novamente os produtos
     let tagUlCar       = document.getElementById("lista-produtos-carrinho")

@@ -224,6 +224,8 @@ main aside section ul li.item-carrinho{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
+    
 }
 main aside section ul li figure.figure-carrinho{
     width: 40%;
@@ -246,8 +248,10 @@ main aside section ul li section.section-carrinho{
     max-width: 50%;
     height: 100px;
     margin: 10px;
-    justify-content: left;
-    align-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
 }
 
 main aside section li section button.btn-remove{
@@ -268,16 +272,13 @@ main aside section div.total-carrinho{
     flex-direction: column;
     width: 345px;
     height: 126px;
+    align-content:space-between;
 }
 
-main aside section div div.linha1{
-    justify-content: space-between;
-    margin:  auto 14px;
- 
+main aside section div div#linha1{
+   margin:  auto 14px;
 }
 
-main aside section div div.linha2{
-    justify-content: space-between;
-    margin:  auto 14px;
-    
+main aside section div div#linha2{
+   margin:  auto 14px;
 }
